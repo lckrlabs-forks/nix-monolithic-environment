@@ -107,7 +107,7 @@ def activate_system_local [ hostData: record, --dry-run=false ] {
     } else {
         let subcommand = if $dry_run { "dry-activate" } else { "switch" }
         log info $"(ansi blue_bold)>>>(ansi reset) nixos-rebuild ($subcommand) --flake ($hostData.flake) ($hostData.outputs.nixArgs | str join) --sudo "
-        nixos-rebuild $subcommand --flake $hostData.flake ...$hostData.outputs.nixArgs --sudo
+        nixos-rebuild $subcommand --flake $hostData.flake ...$hostData.outputs.nixArgs --use-remote-sudo
     }
 }
 
